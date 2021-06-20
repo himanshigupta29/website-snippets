@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        nav {
+            height: 10vh;
+            background-color: #5b78c7;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            margin-left: auto;
+            /* background-color: lightcoral; */
+            width: 60%;
+            height: 100%;;
+        }
+
+        .nav-links li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+
+        }
+
+        .landing {
+            display: flex;
+            flex-direction: column;
+            height: 90VH;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        @media screen and (max-width: 950px) {
+            .nav-links {
+                background-color: lightcoral;
+                width: 70%;
+            }
+        }
+
+        
+        @media screen and (max-width: 768px) {
+            
+            .line {
+                height: 3px;
+                width: 30px;
+                background-color: #fff;
+                margin: 5px;
+            }
+
+
+            /* .hamburger > .line:nth-child(3) {
+                position:relative;
+                top: 5px;
+                transform: rotate(-45deg);
+                transform-origin: left center;
+            }
+
+
+            .hamburger > .line:nth-child(2) {
+                visibility: hidden;
+            }
+
+            .hamburger > .line:nth-child(1) {
+            
+                position:relative;
+                top: 5px;
+                transform: rotate(45deg);
+                transform-origin: left center;
+            
+            } */
+        
+            nav {
+                position: relative;
+            }
+
+            .hamburger {
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                cursor: pointer;
+                transform: translate(-5%, -50%);
+                /* z-index: 2;; */
+            }
+
+            .nav-links {
+                width: 100%;
+                height: 100vh;
+                position: fixed;
+                /* background-color: green; */
+                pointer-events: none;
+                background-color: #5b78c7;
+
+                flex-direction: column;
+                clip-path: circle(100px at 90% -10%);
+                -webkit-clip-path: circle(100px at 90% -10%);
+
+                transition: all 1s ease-out;
+                /* display: none; */
+            }
+
+
+            .nav-links.open {
+                clip-path: circle(1000px at 90% -10%);
+                -webkit-clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+
+            }
+
+
+        }
+
+    </style>
+</head>
+<body>
+    
+    <nav>
+    
+        <ul class="nav-links">
+            <li><a href="" >Home</a></li>
+            <li><a href="" >Notice board</a></li>
+            <li><a href="" >Admissions</a></li>
+            <li><a href="" >Events</a></li>
+            <li><a href="" >Administration</a></li>
+            <li><a href="" >Contact us</a></li>
+        </ul>
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+    </nav>
+
+    <section class="landing">
+
+
+        <h1>
+            Responsive Bubble  Navbar
+         </h1>
+     
+         <p>
+               <!-- <a href= "https://www.youtube.com/watch?v=biOMz4puGt8&t=106s">
+                 Tutorial link
+             </a> -->
+     
+             <a href= "https://www.youtube.com/watch?v=H4MkGzoACpQ" >
+                 Tutorial link
+             </a>
+             
+         </p>
+
+    </section>
+
+<script>
+
+
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelector('.nav-links li');
+
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+</script>
+
+</body>
+</html>

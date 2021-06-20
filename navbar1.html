@@ -51,7 +51,7 @@
 
         @media screen and (max-width: 950px) {
             .nav-links {
-                background-color: lightcoral;
+                /* background-color: lightcoral; */
                 width: 70%;
             }
         }
@@ -64,29 +64,34 @@
                 width: 30px;
                 background-color: #fff;
                 margin: 5px;
+                transition: all .5s ease-out;
+
             }
 
 
-            /* .hamburger > .line:nth-child(3) {
-                position:relative;
-                top: 5px;
-                transform: rotate(-45deg);
-                transform-origin: left center;
-            }
+       
+            .hamburger.close > .line:nth-child(1) {
+
+                transform: rotate(45deg);
+                transform-origin: top left;
+                top: 3px;
+                position: relative;
+
+                }
 
 
-            .hamburger > .line:nth-child(2) {
+            .hamburger.close > .line:nth-child(2) {
                 visibility: hidden;
             }
 
-            .hamburger > .line:nth-child(1) {
-            
-                position:relative;
-                top: 5px;
-                transform: rotate(45deg);
-                transform-origin: left center;
-            
-            } */
+            .hamburger.close > .line:nth-child(3) {
+
+                transform: rotate(-45deg) translate(-5px, 1px);
+                transform-origin: top left;
+                top: 3px;
+                position: relative;
+
+            }
         
             nav {
                 position: relative;
@@ -124,6 +129,9 @@
                 pointer-events: all;
 
             }
+
+
+       
 
 
         }
@@ -181,6 +189,7 @@
 
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
+        hamburger.classList.toggle('close');
     });
 
 </script>

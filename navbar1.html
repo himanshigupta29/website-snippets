@@ -4,87 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <title>Document</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: sans-serif;
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
         }
 
         nav {
-            height: 10vh;
             background-color: #5b78c7;
+            height: 10vh;
         }
 
         .nav-links {
+            list-style: none;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            list-style: none;
+            height: 100%;
+            width: 40%;
             margin-left: auto;
-            /* background-color: lightcoral; */
-            width: 60%;
-            height: 100%;;
         }
 
-        .nav-links li a{
+        .nav-links a {
+            font-size: 1em;
             color: #fff;
             text-decoration: none;
-            font-size: 1em;
-
         }
 
-        .landing {
-            display: flex;
-            flex-direction: column;
-            height: 90VH;
-            justify-content: center;
-            align-items: center;
-        }
+        @media screen and (max-width:768px) {
+            .nav {
+                position: relative;
+            }
 
-
-        @media screen and (max-width: 950px) {
             .nav-links {
-                /* background-color: lightcoral; */
-                width: 70%;
+                flex-direction: column; 
+                position: fixed;
+                background-color: #5b78c7;
+                width: 100%;;
+                height: 100vh;
+                transition: all 0.8s ease-out;
+                clip-path: circle(50px at 90% 10px);
+                -moz-clip-path: circle(50px at 90% 10px);
+                -webkit-clip-path: circle(50px at 90% 10px);
             }
-        }
 
-        
-        @media screen and (max-width: 768px) {
-            
-            .line {
-                height: 3px;
+            .nav-links.open {
+                clip-path: circle(1000px at 90% 10px);
+                -moz-clip-path: circle(1000px at 90% 10px);
+                -webkit-clip-path: circle(1000px at 90% 10px);
+            }
+
+            .hamburger {
                 width: 30px;
-                background-color: #fff;
-                margin: 5px;
-                transition: all .5s ease-out;
+                position: absolute;
+                left: 87%;
+                top: 15px;
+                cursor: pointer;
+
 
             }
 
+            .hamburger .line {
+                height: 3px;
+                background-color: #fff;
+                margin: 5px 0;
+                transition: all .5s ease-out;
+            }
 
-       
-            .hamburger.close > .line:nth-child(1) {
+            .hamburger.close .line {
+                height: 3px;
+                background-color: #fff;
+                margin: 5px 0;
+            }
+
+            .hamburger.close .line:nth-child(1) {
 
                 transform: rotate(45deg);
                 transform-origin: top left;
                 top: 3px;
                 position: relative;
 
-                }
+            }
 
-
-            .hamburger.close > .line:nth-child(2) {
+            .hamburger.close .line:nth-child(2) {
                 visibility: hidden;
             }
 
-            .hamburger.close > .line:nth-child(3) {
+            .hamburger.close .line:nth-child(3) {
 
                 transform: rotate(-45deg) translate(-5px, 1px);
                 transform-origin: top left;
@@ -92,63 +103,23 @@
                 position: relative;
 
             }
-        
-            nav {
-                position: relative;
-            }
-
-            .hamburger {
-                position: absolute;
-                right: 5%;
-                top: 50%;
-                cursor: pointer;
-                transform: translate(-5%, -50%);
-                /* z-index: 2;; */
-            }
-
-            .nav-links {
-                width: 100%;
-                height: 100vh;
-                position: fixed;
-                /* background-color: green; */
-                pointer-events: none;
-                background-color: #5b78c7;
-
-                flex-direction: column;
-                clip-path: circle(100px at 90% -10%);
-                -webkit-clip-path: circle(100px at 90% -10%);
-
-                transition: all 1s ease-out;
-                /* display: none; */
-            }
-
-
-            .nav-links.open {
-                clip-path: circle(1000px at 90% -10%);
-                -webkit-clip-path: circle(1000px at 90% -10%);
-                pointer-events: all;
-
-            }
-
-
-       
 
 
         }
+        
 
     </style>
+
+
 </head>
 <body>
-    
     <nav>
-    
+
         <ul class="nav-links">
-            <li><a href="" >Home</a></li>
-            <li><a href="" >Notice board</a></li>
-            <li><a href="" >Admissions</a></li>
-            <li><a href="" >Events</a></li>
-            <li><a href="" >Administration</a></li>
-            <li><a href="" >Contact us</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Admin</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Contact us</a> </li>
         </ul>
 
         <div class="hamburger">
@@ -158,41 +129,22 @@
         </div>
 
     </nav>
+    <main>
+        <h1>Welcome</h1>
+    </main>
 
-    <section class="landing">
+    <script>
 
+        const nav = document.querySelector('.nav-links');
+        const hamburger = document.querySelector('.hamburger');
 
-        <h1>
-            Responsive Bubble  Navbar
-         </h1>
-     
-         <p>
-               <!-- <a href= "https://www.youtube.com/watch?v=biOMz4puGt8&t=106s">
-                 Tutorial link
-             </a> -->
-     
-             <a href= "https://www.youtube.com/watch?v=H4MkGzoACpQ" >
-                 Tutorial link
-             </a>
-             
-         </p>
+        hamburger.addEventListener('click', (e) => {
 
-    </section>
-
-<script>
+            nav.classList.toggle('open')
+            hamburger.classList.toggle('close')
 
 
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelector('.nav-links li');
-
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        hamburger.classList.toggle('close');
-    });
-
-</script>
-
+        })
+    </script>
 </body>
 </html>
